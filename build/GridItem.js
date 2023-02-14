@@ -265,7 +265,7 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
       var style;
       // CSS Transforms support (default)
       if (useCSSTransforms) {
-        style = (0, _utils.setTransform)(pos, "rtl");
+        style = (0, _utils.setTransform)(pos, this.props.direction);
       } else {
         // top,left (slow)
         style = (0, _utils.setTopLeft)(pos);

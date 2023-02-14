@@ -63,7 +63,7 @@ type Props = {
   usePercentages?: boolean,
   transformScale: number,
   droppingPosition?: DroppingPosition,
-
+  direction: string,
   className: string,
   style?: Object,
   // Draggability
@@ -100,6 +100,7 @@ type DefaultProps = {
   minW: number,
   maxH: number,
   maxW: number,
+  direction: string,
   transformScale: number
 };
 
@@ -314,7 +315,7 @@ export default class GridItem extends React.Component<Props, State> {
     let style;
     // CSS Transforms support (default)
     if (useCSSTransforms) {
-      style = setTransform(pos, "rtl");
+      style = setTransform(pos, this.props.direction);
     } else {
       // top,left (slow)
       style = setTopLeft(pos);

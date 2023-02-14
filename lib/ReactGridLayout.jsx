@@ -502,7 +502,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     // {...this.state.activeDrag} is pretty slow, actually
     return (
       <GridItem
-        direction={"rtl"}
+        direction={"ltr"}
         w={activeDrag.w}
         h={activeDrag.h}
         x={activeDrag.x}
@@ -575,7 +575,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
 
     return (
       <GridItem
-        direction={"rtl"}
+        direction={"ltr"}
         containerWidth={width}
         cols={cols}
         margin={margin}
