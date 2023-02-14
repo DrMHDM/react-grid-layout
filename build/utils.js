@@ -31,8 +31,8 @@ exports.sortLayoutItemsByRowCol = sortLayoutItemsByRowCol;
 exports.synchronizeLayoutWithChildren = synchronizeLayoutWithChildren;
 exports.validateLayout = validateLayout;
 exports.withLayoutItem = withLayoutItem;
-var _lodash = _interopRequireDefault(require("lodash.isequal"));
 var _react = _interopRequireDefault(require("react"));
+var _lodash = _interopRequireDefault(require("lodash.isequal"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -467,7 +467,8 @@ function setTransform(_ref /*:: */) /*: Object*/{
     width = _ref /*:: */.width,
     height = _ref /*:: */.height;
   // Replace unitless items with px
-  var translate = "translate(".concat(-left, "px,").concat(top, "px)");
+  var rtl = getComputedStyle(document.getElementById("ResponsiveGridSystemId")).direction === "rtl";
+  var translate = "translate(".concat(rtl ? -left : left, "px,").concat(top, "px)");
   return {
     transform: translate,
     WebkitTransform: translate,

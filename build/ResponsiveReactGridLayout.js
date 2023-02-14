@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var React = _interopRequireWildcard(require("react"));
-var _propTypes = _interopRequireDefault(require("prop-types"));
-var _lodash = _interopRequireDefault(require("lodash.isequal"));
-var _utils = require("./utils");
 var _responsiveUtils = require("./responsiveUtils");
+var _utils = require("./utils");
+var _propTypes = _interopRequireDefault(require("prop-types"));
 var _ReactGridLayout = _interopRequireDefault(require("./ReactGridLayout"));
+var _lodash = _interopRequireDefault(require("lodash.isequal"));
 var _excluded = ["breakpoint", "breakpoints", "cols", "layouts", "margin", "containerPadding", "onBreakpointChange", "onLayoutChange", "onWidthChange"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -206,7 +206,9 @@ var ResponsiveReactGridLayout = /*#__PURE__*/function (_React$Component) {
       /* eslint-enable no-unused-vars */
 
       return /*#__PURE__*/React.createElement(_ReactGridLayout.default, _extends({}, other, {
+        id: "ResponsiveGridSystemId"
         // $FlowIgnore should allow nullable here due to DefaultProps
+        ,
         margin: getIndentationValue(margin, this.state.breakpoint),
         containerPadding: getIndentationValue(containerPadding, this.state.breakpoint),
         onLayoutChange: this.onLayoutChange,
