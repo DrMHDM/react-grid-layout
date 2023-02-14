@@ -314,7 +314,7 @@ export default class GridItem extends React.Component<Props, State> {
     let style;
     // CSS Transforms support (default)
     if (useCSSTransforms) {
-      style = setTransform(pos, this.props.direction);
+      style = setTransform(pos, "rtl");
     } else {
       // top,left (slow)
       style = setTopLeft(pos);
