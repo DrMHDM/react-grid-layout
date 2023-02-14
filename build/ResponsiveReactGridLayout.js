@@ -206,7 +206,8 @@ var ResponsiveReactGridLayout = /*#__PURE__*/function (_React$Component) {
       /* eslint-enable no-unused-vars */
 
       return /*#__PURE__*/React.createElement(_ReactGridLayout.default, _extends({}, other, {
-        id: "ResponsiveGridSystemId"
+        id: "ResponsiveGridSystemId",
+        direction: "rtl"
         // $FlowIgnore should allow nullable here due to DefaultProps
         ,
         margin: getIndentationValue(margin, this.state.breakpoint),

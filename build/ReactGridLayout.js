@@ -455,11 +455,12 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         rowHeight = _this$props7.rowHeight,
         maxRows = _this$props7.maxRows,
         useCSSTransforms = _this$props7.useCSSTransforms,
-        transformScale = _this$props7.transformScale;
+        transformScale = _this$props7.transformScale,
+        direction = _this$props7.direction;
 
       // {...this.state.activeDrag} is pretty slow, actually
       return /*#__PURE__*/React.createElement(_GridItem.default, {
-        direction: "ltr",
+        direction: direction,
         w: activeDrag.w,
         h: activeDrag.h,
         x: activeDrag.x,
@@ -506,7 +507,8 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         draggableCancel = _this$props8.draggableCancel,
         draggableHandle = _this$props8.draggableHandle,
         resizeHandles = _this$props8.resizeHandles,
-        resizeHandle = _this$props8.resizeHandle;
+        resizeHandle = _this$props8.resizeHandle,
+        direction = _this$props8.direction;
       var _this$state3 = this.state,
         mounted = _this$state3.mounted,
         droppingPosition = _this$state3.droppingPosition;
@@ -521,7 +523,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
       // isBounded set on child if set on parent, and child is not explicitly false
       var bounded = draggable && isBounded && l.isBounded !== false;
       return /*#__PURE__*/React.createElement(_GridItem.default, {
-        direction: "ltr",
+        direction: direction,
         containerWidth: width,
         cols: cols,
         margin: margin,
@@ -652,6 +654,7 @@ _defineProperty(ReactGridLayout, "defaultProps", {
     h: 1,
     w: 1
   },
+  direction: "ltr",
   resizeHandles: ["se"],
   onLayoutChange: _utils.noop,
   onDragStart: _utils.noop,

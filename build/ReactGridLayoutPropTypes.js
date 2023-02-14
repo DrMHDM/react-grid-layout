@@ -7,6 +7,18 @@ exports.resizeHandleType = exports.resizeHandleAxesType = exports.default = void
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/*:: import type {
+  CompactType,
+  DragOverEvent,
+  EventCallback,
+  Layout,
+  LayoutItem
+} from "./utils";*/
+/*:: import type {
+  ChildrenArray as ReactChildrenArray,
+  Element as ReactElement,
+  Ref
+} from "react";*/
 // Defines which resize handles should be rendered (default: 'se')
 // Allows for any combination of:
 // 's' - South handle (bottom-center)
@@ -37,6 +49,7 @@ var resizeHandleType /*: ReactPropsChainableTypeChecker*/ = _propTypes.default.o
   rowHeight: number,
   maxRows: number,
   isBounded: boolean,
+  direction: string,
   isDraggable: boolean,
   isResizable: boolean,
   isDroppable: boolean,
