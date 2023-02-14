@@ -92,6 +92,7 @@ var _default = {
   // be set to the container width. Note that resizes will *not* cause this to adjust.
   // If you need that behavior, use WidthProvider.
   width: _propTypes.default.number,
+  direction: _propTypes.default.string,
   // If true, the container height swells and contracts to fit contents
   autoSize: _propTypes.default.bool,
   // # of cols.
