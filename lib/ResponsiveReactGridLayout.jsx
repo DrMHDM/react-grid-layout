@@ -336,7 +336,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
       <ReactGridLayout
         {...other}
         id={"ResponsiveGridSystemId"}
-        direction={"ltr"}
+        direction={"rtl"}
         // $FlowIgnore should allow nullable here due to DefaultProps
         margin={getIndentationValue(margin, this.state.breakpoint)}
         containerPadding={getIndentationValue(
