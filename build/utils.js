@@ -461,13 +461,13 @@ function moveElementAwayFromCollision(layout /*: Layout*/, collidesWith /*: Layo
 function perc(num /*: number*/) /*: string*/{
   return num * 100 + "%";
 }
-function setTransform(_ref /*:: */) /*: Object*/{
+function setTransform(_ref /*:: */, direction) /*: Object*/{
   var top = _ref /*:: */.top,
     left = _ref /*:: */.left,
     width = _ref /*:: */.width,
     height = _ref /*:: */.height;
   // Replace unitless items with px
-  var rtl = document.dir === "rtl";
+  var rtl = direction === "rtl";
   var translate = "translate(".concat(rtl ? -left : left, "px,").concat(top, "px)");
   return {
     transform: translate,

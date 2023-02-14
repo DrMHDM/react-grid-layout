@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _propTypes = _interopRequireDefault(require("prop-types"));
-var _reactDraggable = require("react-draggable");
-var _reactResizable = require("react-resizable");
-var _utils = require("./utils");
 var _calculateUtils = require("./calculateUtils");
+var _utils = require("./utils");
 var _ReactGridLayoutPropTypes = require("./ReactGridLayoutPropTypes");
+var _reactDraggable = require("react-draggable");
+var _propTypes = _interopRequireDefault(require("prop-types"));
+var _react = _interopRequireDefault(require("react"));
+var _reactResizable = require("react-resizable");
 var _clsx = _interopRequireDefault(require("clsx"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -265,7 +265,7 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
       var style;
       // CSS Transforms support (default)
       if (useCSSTransforms) {
-        style = (0, _utils.setTransform)(pos);
+        style = (0, _utils.setTransform)(pos, this.props.direction);
       } else {
         // top,left (slow)
         style = (0, _utils.setTopLeft)(pos);
@@ -501,8 +501,10 @@ _defineProperty(GridItem, "propTypes", {
   useCSSTransforms: _propTypes.default.bool.isRequired,
   transformScale: _propTypes.default.number,
   // Others
+
   className: _propTypes.default.string,
   // Selector for draggable handle
+  direction: _propTypes.default.string,
   handle: _propTypes.default.string,
   // Selector for draggable cancel (see react-draggable)
   cancel: _propTypes.default.string,
@@ -521,5 +523,6 @@ _defineProperty(GridItem, "defaultProps", {
   minW: 1,
   maxH: Infinity,
   maxW: Infinity,
+  direction: "ltr",
   transformScale: 1
 });

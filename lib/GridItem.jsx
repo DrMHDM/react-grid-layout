@@ -1,38 +1,37 @@
-// @flow
-import React from "react";
-import PropTypes from "prop-types";
-import { DraggableCore } from "react-draggable";
-import { Resizable } from "react-resizable";
-import { fastPositionEqual, perc, setTopLeft, setTransform } from "./utils";
+import type {
+  DroppingPosition,
+  GridDragEvent,
+  GridResizeEvent,
+  Position,
+  ReactDraggableCallbackData
+} from "./utils";
+import type { Element as ReactElement, Node as ReactNode } from "react";
+import type {
+  ReactRef,
+  ResizeHandle,
+  ResizeHandleAxis
+} from "./ReactGridLayoutPropTypes";
 import {
+  calcGridColWidth,
   calcGridItemPosition,
   calcGridItemWHPx,
-  calcGridColWidth,
-  calcXY,
   calcWH,
+  calcXY,
   clamp
 } from "./calculateUtils";
+import { fastPositionEqual, perc, setTopLeft, setTransform } from "./utils";
 import {
   resizeHandleAxesType,
   resizeHandleType
 } from "./ReactGridLayoutPropTypes";
-import clsx from "clsx";
-import type { Element as ReactElement, Node as ReactNode } from "react";
 
-import type {
-  ReactDraggableCallbackData,
-  GridDragEvent,
-  GridResizeEvent,
-  DroppingPosition,
-  Position
-} from "./utils";
-
+import { DraggableCore } from "react-draggable";
 import type { PositionParams } from "./calculateUtils";
-import type {
-  ResizeHandleAxis,
-  ResizeHandle,
-  ReactRef
-} from "./ReactGridLayoutPropTypes";
+import PropTypes from "prop-types";
+// @flow
+import React from "react";
+import { Resizable } from "react-resizable";
+import clsx from "clsx";
 
 type PartialPosition = { top: number, left: number };
 type GridItemCallback<Data: GridDragEvent | GridResizeEvent> = (
@@ -181,8 +180,9 @@ export default class GridItem extends React.Component<Props, State> {
     transformScale: PropTypes.number,
 
     // Others
-    className: PropTypes.string,
-    // Selector for draggable handle
+
+    className: PropTypes.string, // Selector for draggable handle
+    direction: PropTypes.string,
     handle: PropTypes.string,
     // Selector for draggable cancel (see react-draggable)
     cancel: PropTypes.string,
@@ -202,6 +202,7 @@ export default class GridItem extends React.Component<Props, State> {
     minW: 1,
     maxH: Infinity,
     maxW: Infinity,
+    direction: "ltr",
     transformScale: 1
   };
 
@@ -313,7 +314,7 @@ export default class GridItem extends React.Component<Props, State> {
     let style;
     // CSS Transforms support (default)
     if (useCSSTransforms) {
-      style = setTransform(pos);
+      style = setTransform(pos, this.props.direction);
     } else {
       // top,left (slow)
       style = setTopLeft(pos);

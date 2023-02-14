@@ -1,8 +1,21 @@
 // @flow
 import * as React from "react";
 
-import isEqual from "lodash.isequal";
-import clsx from "clsx";
+// Types
+import type {
+  CompactType,
+  DragOverEvent,
+  DroppingPosition,
+  GridDragEvent,
+  GridResizeEvent,
+  Layout,
+  LayoutItem
+} from "./utils";
+import type { DefaultProps, Props } from "./ReactGridLayoutPropTypes";
+import type {
+  ChildrenArray as ReactChildrenArray,
+  Element as ReactElement
+} from "react";
 import {
   bottom,
   childrenEqual,
@@ -18,27 +31,12 @@ import {
   withLayoutItem
 } from "./utils";
 
-import { calcXY } from "./calculateUtils";
-
 import GridItem from "./GridItem";
-import ReactGridLayoutPropTypes from "./ReactGridLayoutPropTypes";
-import type {
-  ChildrenArray as ReactChildrenArray,
-  Element as ReactElement
-} from "react";
-
-// Types
-import type {
-  CompactType,
-  GridResizeEvent,
-  GridDragEvent,
-  DragOverEvent,
-  Layout,
-  DroppingPosition,
-  LayoutItem
-} from "./utils";
-
 import type { PositionParams } from "./calculateUtils";
+import ReactGridLayoutPropTypes from "./ReactGridLayoutPropTypes";
+import { calcXY } from "./calculateUtils";
+import clsx from "clsx";
+import isEqual from "lodash.isequal";
 
 type State = {
   activeDrag: ?LayoutItem,
@@ -54,8 +52,6 @@ type State = {
   compactType?: CompactType,
   propsLayout?: Layout
 };
-
-import type { Props, DefaultProps } from "./ReactGridLayoutPropTypes";
 
 // End Types
 
@@ -506,6 +502,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     // {...this.state.activeDrag} is pretty slow, actually
     return (
       <GridItem
+        direction={"rtl"}
         w={activeDrag.w}
         h={activeDrag.h}
         x={activeDrag.x}
@@ -578,6 +575,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
 
     return (
       <GridItem
+        direction={"rtl"}
         containerWidth={width}
         cols={cols}
         margin={margin}
