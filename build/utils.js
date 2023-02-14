@@ -468,7 +468,7 @@ function setTransform(_ref /*:: */, direction) /*: Object*/{
     height = _ref /*:: */.height;
   // Replace unitless items with px
   var rtl = direction === "rtl";
-  var translate = "translate(".concat(rtl ? -left : left, "px,").concat(top, "px)");
+  var translate = "translate(".concat(rtl ? left : -left, "px,").concat(top, "px)");
   return {
     transform: translate,
     WebkitTransform: translate,
