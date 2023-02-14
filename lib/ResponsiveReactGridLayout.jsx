@@ -102,7 +102,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
     // Optional, but if you are managing width yourself you may want to set the breakpoint
     // yourself as well.
     breakpoint: PropTypes.string,
-
+    direction: PropTypes.string,
     // {name: pxVal}, e.g. {lg: 1200, md: 996, sm: 768, xs: 480}
     breakpoints: PropTypes.object,
 
@@ -168,6 +168,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
     layouts: {},
     margin: [10, 10],
     allowOverlap: false,
+    direction: "ltr",
     onBreakpointChange: noop,
     onLayoutChange: noop,
     onWidthChange: noop
@@ -328,6 +329,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
       onBreakpointChange,
       onLayoutChange,
       onWidthChange,
+      direction,
       ...other
     } = this.props;
     /* eslint-enable no-unused-vars */
@@ -336,7 +338,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
       <ReactGridLayout
         {...other}
         id={"ResponsiveGridSystemId"}
-        direction={"rtl"}
+        direction={direction}
         // $FlowIgnore should allow nullable here due to DefaultProps
         margin={getIndentationValue(margin, this.state.breakpoint)}
         containerPadding={getIndentationValue(

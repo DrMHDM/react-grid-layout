@@ -10,7 +10,7 @@ var _utils = require("./utils");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _ReactGridLayout = _interopRequireDefault(require("./ReactGridLayout"));
 var _lodash = _interopRequireDefault(require("lodash.isequal"));
-var _excluded = ["breakpoint", "breakpoints", "cols", "layouts", "margin", "containerPadding", "onBreakpointChange", "onLayoutChange", "onWidthChange"];
+var _excluded = ["breakpoint", "breakpoints", "cols", "layouts", "margin", "containerPadding", "onBreakpointChange", "onLayoutChange", "onWidthChange", "direction"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -202,12 +202,13 @@ var ResponsiveReactGridLayout = /*#__PURE__*/function (_React$Component) {
         onBreakpointChange = _this$props3.onBreakpointChange,
         onLayoutChange = _this$props3.onLayoutChange,
         onWidthChange = _this$props3.onWidthChange,
+        direction = _this$props3.direction,
         other = _objectWithoutProperties(_this$props3, _excluded);
       /* eslint-enable no-unused-vars */
 
       return /*#__PURE__*/React.createElement(_ReactGridLayout.default, _extends({}, other, {
         id: "ResponsiveGridSystemId",
-        direction: "rtl"
+        direction: direction
         // $FlowIgnore should allow nullable here due to DefaultProps
         ,
         margin: getIndentationValue(margin, this.state.breakpoint),
@@ -247,6 +248,7 @@ _defineProperty(ResponsiveReactGridLayout, "propTypes", {
   // Optional, but if you are managing width yourself you may want to set the breakpoint
   // yourself as well.
   breakpoint: _propTypes.default.string,
+  direction: _propTypes.default.string,
   // {name: pxVal}, e.g. {lg: 1200, md: 996, sm: 768, xs: 480}
   breakpoints: _propTypes.default.object,
   allowOverlap: _propTypes.default.bool,
@@ -315,6 +317,7 @@ _defineProperty(ResponsiveReactGridLayout, "defaultProps", {
   layouts: {},
   margin: [10, 10],
   allowOverlap: false,
+  direction: "ltr",
   onBreakpointChange: _utils.noop,
   onLayoutChange: _utils.noop,
   onWidthChange: _utils.noop
