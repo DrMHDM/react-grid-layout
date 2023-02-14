@@ -1,25 +1,26 @@
 // @flow
 import * as React from "react";
-import PropTypes from "prop-types";
-import isEqual from "lodash.isequal";
 
 import {
-  cloneLayout,
-  synchronizeLayoutWithChildren,
-  validateLayout,
-  noop,
-  type Layout,
-  type Pick
-} from "./utils";
-import {
-  getBreakpointFromWidth,
-  getColsFromBreakpoint,
-  findOrGenerateResponsiveLayout,
-  type ResponsiveLayout,
+  type Breakpoints,
   type OnLayoutChangeCallback,
-  type Breakpoints
+  type ResponsiveLayout,
+  findOrGenerateResponsiveLayout,
+  getBreakpointFromWidth,
+  getColsFromBreakpoint
 } from "./responsiveUtils";
+import {
+  type Layout,
+  type Pick,
+  cloneLayout,
+  noop,
+  synchronizeLayoutWithChildren,
+  validateLayout
+} from "./utils";
+
+import PropTypes from "prop-types";
 import ReactGridLayout from "./ReactGridLayout";
+import isEqual from "lodash.isequal";
 
 // $FlowFixMe[method-unbinding]
 const type = obj => Object.prototype.toString.call(obj);
@@ -334,6 +335,7 @@ export default class ResponsiveReactGridLayout extends React.Component<
     return (
       <ReactGridLayout
         {...other}
+        id={"ResponsiveGridSystemId"}
         // $FlowIgnore should allow nullable here due to DefaultProps
         margin={getIndentationValue(margin, this.state.breakpoint)}
         containerPadding={getIndentationValue(
