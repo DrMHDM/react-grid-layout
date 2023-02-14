@@ -467,8 +467,7 @@ function setTransform(_ref /*:: */) /*: Object*/{
     width = _ref /*:: */.width,
     height = _ref /*:: */.height;
   // Replace unitless items with px
-  var rtl = getComputedStyle(document.getElementById("ResponsiveGridSystemId")).direction === "rtl";
-  console.log("🚀 ~ setTransform ~ rtl", rtl);
+  var rtl = document.dir === "rtl";
   var translate = "translate(".concat(rtl ? -left : left, "px,").concat(top, "px)");
   return {
     transform: translate,
