@@ -459,7 +459,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
 
       // {...this.state.activeDrag} is pretty slow, actually
       return /*#__PURE__*/React.createElement(_GridItem.default, {
-        direction: "rtl",
+        direction: "ltr",
         w: activeDrag.w,
         h: activeDrag.h,
         x: activeDrag.x,
@@ -521,7 +521,7 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
       // isBounded set on child if set on parent, and child is not explicitly false
       var bounded = draggable && isBounded && l.isBounded !== false;
       return /*#__PURE__*/React.createElement(_GridItem.default, {
-        direction: "rtl",
+        direction: "ltr",
         containerWidth: width,
         cols: cols,
         margin: margin,
