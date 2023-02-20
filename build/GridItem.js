@@ -438,7 +438,8 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
 
       // Draggable support. This is always on, except for with placeholders.
       newChild = this.mixinDraggable(newChild, isDraggable);
-      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
+      console.log("MYLOG:", this.props.disabled);
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, !this.props.disabled && newChild);
     }
   }]);
   return GridItem;
