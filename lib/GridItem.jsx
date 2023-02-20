@@ -671,7 +671,6 @@ export default class GridItem extends React.Component<Props, State> {
 
     // Draggable support. This is always on, except for with placeholders.
     newChild = this.mixinDraggable(newChild, isDraggable);
-    console.log("MYLOG:", this.props.disabled);
-    return <>{!this.props.disabled && newChild}</>;
+    return newChild;
   }
 }

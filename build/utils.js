@@ -554,11 +554,15 @@ function synchronizeLayoutWithChildren(initialLayout /*: Layout*/, children /*: 
   // Generate one layout item per child.
   var layout /*: LayoutItem[]*/ = [];
   _react.default.Children.forEach(children, function (child /*: ReactElement<any>*/) {
+    console.log("🚀 ~ React.Children.forEach ~ child:", child);
+
     // Child may not exist
     if ((child === null || child === void 0 ? void 0 : child.key) == null) return;
+    console.log("🚀 ~ React.Children.forEach ~ initialLayout:", initialLayout);
 
     // Don't overwrite if it already exists.
     var exists = getLayoutItem(initialLayout, String(child.key));
+    console.log("🚀 ~ React.Children.forEach ~ exists:", exists);
     if (exists) {
       layout.push(cloneLayoutItem(exists));
     } else {
