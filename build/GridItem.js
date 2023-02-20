@@ -438,7 +438,7 @@ var GridItem = /*#__PURE__*/function (_React$Component) {
 
       // Draggable support. This is always on, except for with placeholders.
       newChild = this.mixinDraggable(newChild, isDraggable);
-      return newChild;
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, this.props.disabled && newChild);
     }
   }]);
   return GridItem;
@@ -505,6 +505,7 @@ _defineProperty(GridItem, "propTypes", {
   className: _propTypes.default.string,
   // Selector for draggable handle
   direction: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
   handle: _propTypes.default.string,
   // Selector for draggable cancel (see react-draggable)
   cancel: _propTypes.default.string,
@@ -524,5 +525,6 @@ _defineProperty(GridItem, "defaultProps", {
   maxH: Infinity,
   maxW: Infinity,
   direction: "ltr",
+  disabled: false,
   transformScale: 1
 });

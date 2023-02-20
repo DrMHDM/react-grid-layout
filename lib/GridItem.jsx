@@ -64,6 +64,7 @@ type Props = {
   transformScale: number,
   droppingPosition?: DroppingPosition,
   direction: string,
+  disabled: boolean,
   className: string,
   style?: Object,
   // Draggability
@@ -101,6 +102,7 @@ type DefaultProps = {
   maxH: number,
   maxW: number,
   direction: string,
+  disabled: boolean,
   transformScale: number
 };
 
@@ -184,6 +186,7 @@ export default class GridItem extends React.Component<Props, State> {
 
     className: PropTypes.string, // Selector for draggable handle
     direction: PropTypes.string,
+    disabled: PropTypes.bool,
     handle: PropTypes.string,
     // Selector for draggable cancel (see react-draggable)
     cancel: PropTypes.string,
@@ -204,6 +207,7 @@ export default class GridItem extends React.Component<Props, State> {
     maxH: Infinity,
     maxW: Infinity,
     direction: "ltr",
+    disabled: false,
     transformScale: 1
   };
 
@@ -668,6 +672,6 @@ export default class GridItem extends React.Component<Props, State> {
     // Draggable support. This is always on, except for with placeholders.
     newChild = this.mixinDraggable(newChild, isDraggable);
 
-    return newChild;
+    return <>{this.props.disabled && newChild}</>;
   }
 }
