@@ -505,7 +505,6 @@ _defineProperty(GridItem, "propTypes", {
   className: _propTypes.default.string,
   // Selector for draggable handle
   direction: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
   handle: _propTypes.default.string,
   // Selector for draggable cancel (see react-draggable)
   cancel: _propTypes.default.string,
@@ -525,6 +524,5 @@ _defineProperty(GridItem, "defaultProps", {
   maxH: Infinity,
   maxW: Infinity,
   direction: "ltr",
-  disabled: false,
   transformScale: 1
 });

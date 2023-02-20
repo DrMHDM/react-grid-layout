@@ -34,12 +34,10 @@ exports.withLayoutItem = withLayoutItem;
 var _react = _interopRequireDefault(require("react"));
 var _lodash = _interopRequireDefault(require("lodash.isequal"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+/*:: import type {
+  ChildrenArray as ReactChildrenArray,
+  Element as ReactElement
+} from "react";*/
 var isProduction = process.env.NODE_ENV === "production";
 var DEBUG = false;
 
@@ -563,31 +561,34 @@ function synchronizeLayoutWithChildren(initialLayout /*: Layout*/, children /*: 
       layout.push(cloneLayoutItem(exists));
     } else {
       return;
-      if (!isProduction && child.props._grid) {
-        console.warn("`_grid` properties on children have been deprecated as of React 15.2. " + "Please use `data-grid` or add your properties directly to the `layout`.");
-      }
-      var g = child.props["data-grid"] || child.props._grid;
+      // if (!isProduction && child.props._grid) {
+      //   console.warn(
+      //     "`_grid` properties on children have been deprecated as of React 15.2. " +
+      //       "Please use `data-grid` or add your properties directly to the `layout`."
+      //   );
+      // }
+      // const g = child.props["data-grid"] || child.props._grid;
 
-      // Hey, this item has a data-grid property, use it.
-      if (g) {
-        if (!isProduction) {
-          validateLayout([g], "ReactGridLayout.children");
-        }
-        // FIXME clone not really necessary here
-        layout.push(cloneLayoutItem(_objectSpread(_objectSpread({}, g), {}, {
-          i: child.key
-        })));
-      } else {
-        // Nothing provided: ensure this is added to the bottom
-        // FIXME clone not really necessary here
-        layout.push(cloneLayoutItem({
-          w: 1,
-          h: 1,
-          x: 0,
-          y: bottom(layout),
-          i: String(child.key)
-        }));
-      }
+      // // Hey, this item has a data-grid property, use it.
+      // if (g) {
+      //   if (!isProduction) {
+      //     validateLayout([g], "ReactGridLayout.children");
+      //   }
+      //   // FIXME clone not really necessary here
+      //   layout.push(cloneLayoutItem({ ...g, i: child.key }));
+      // } else {
+      //   // Nothing provided: ensure this is added to the bottom
+      //   // FIXME clone not really necessary here
+      //   layout.push(
+      //     cloneLayoutItem({
+      //       w: 1,
+      //       h: 1,
+      //       x: 0,
+      //       y: bottom(layout),
+      //       i: String(child.key)
+      //     })
+      //   );
+      // }
     }
   });
 
